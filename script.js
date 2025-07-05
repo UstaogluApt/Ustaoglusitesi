@@ -226,12 +226,12 @@
             ${resident.status}
         </span>
     </td>
-    <td class="admin-only px-6 py-4 whitespace-nowrap text-sm font-medium" style="\${isAdmin ? 'display: table-cell;' : 'display: none;'}">
-        <button type="button" onclick="editResident(\${resident.id})" class="text-blue-600 hover:text-blue-900 mr-3 px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500">Düzenle</button>
-        <button type="button" onclick="deleteResident(\${resident.id})" class="text-red-600 hover:text-red-900 px-2 py-1 rounded hover:bg-red-50 border border-red-300 hover:border-red-500">Sil</button>
+    <td class="admin-only px-6 py-4 whitespace-nowrap text-sm font-medium" style="${isAdmin ? 'display: table-cell;' : 'display: none;'}">
+        <button type="button" onclick="editResident(${resident.id})" class="text-blue-600 hover:text-blue-900 mr-3 px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500">Düzenle</button>
+        <button type="button" onclick="deleteResident(${resident.id})" class="text-red-600 hover:text-red-900 px-2 py-1 rounded hover:bg-red-50 border border-red-300 hover:border-red-500">Sil</button>
     </td>
 </tr>
-` ).join("");('');
+` ).join("");("");('');
     }
 
     // Load dues table
