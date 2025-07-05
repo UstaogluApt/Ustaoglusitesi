@@ -216,22 +216,22 @@
     function loadResidents() {
         const tbody = document.getElementById('residentsTable');
         tbody.innerHTML = residents.map(resident => `
-            <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${resident.apartment}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.name}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.phone}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.email}</td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-                        ${resident.status}
-                    </span>
-                </td>
-                <td class="admin-only px-6 py-4 whitespace-nowrap text-sm font-medium" style="${isAdmin ? 'display: table-cell;' : 'display: none;'}">
-                    <button type="button" onclick="editResident(${resident.id})" class="text-blue-600 hover:text-blue-900 mr-3 px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500">Düzenle</button>
-                    <button type="button" onclick="deleteResident(${resident.id})" class="text-red-600 hover:text-red-900 px-2 py-1 rounded hover:bg-red-50 border border-red-300 hover:border-red-500">Sil</button>
-                </td>
-            </tr>
-        `).join('');
+<tr>
+    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${resident.apartment}</td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.name}</td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.phone}</td>
+    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.email}</td>
+    <td class="px-6 py-4 whitespace-nowrap">
+        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+            ${resident.status}
+        </span>
+    </td>
+    <td class="admin-only px-6 py-4 whitespace-nowrap text-sm font-medium" style="\${isAdmin ? 'display: table-cell;' : 'display: none;'}">
+        <button type="button" onclick="editResident(\${resident.id})" class="text-blue-600 hover:text-blue-900 mr-3 px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500">Düzenle</button>
+        <button type="button" onclick="deleteResident(\${resident.id})" class="text-red-600 hover:text-red-900 px-2 py-1 rounded hover:bg-red-50 border border-red-300 hover:border-red-500">Sil</button>
+    </td>
+</tr>
+` ).join("");('');
     }
 
     // Load dues table
