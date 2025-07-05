@@ -545,8 +545,7 @@
                     apartment: parseInt(document.getElementById('apartmentNo').value),
                     name: document.getElementById('residentName').value,
                     phone: document.getElementById('residentPhone').value,
-                    email: document.getElementById('residentEmail').value,
-                    monthlyDues: parseFloat(document.getElementById('residentDues').value)
+                    email: document.getElementById('residentEmail').value
                 };
                 
                 // Update dues table if apartment number changed
@@ -572,8 +571,7 @@
                 name: document.getElementById('residentName').value,
                 phone: document.getElementById('residentPhone').value,
                 email: document.getElementById('residentEmail').value,
-                status: 'Aktif',
-                monthlyDues: parseFloat(document.getElementById('residentDues').value)
+                status: 'Aktif'
             };
             
             residents.push(newResident);
@@ -669,8 +667,6 @@
         document.getElementById('residentName').value = resident.name;
         document.getElementById('residentPhone').value = resident.phone;
         document.getElementById('residentEmail').value = resident.email;
-        document.getElementById('residentDues').value = resident.monthlyDues;
-        
         // Change modal title and button text
         document.querySelector('#addResidentModal h3').textContent = 'Sakin Bilgilerini Düzenle';
         document.querySelector('#addResidentModal button[type="submit"]').textContent = 'Güncelle';
