@@ -31,11 +31,11 @@
 
     // Sample data
     let residents = [
-        { id: 1, apartment: 1, name: "Ahmet Yılmaz", phone: "0532 123 4567", email: "ahmet@email.com", status: "Aktif", monthlyDues: 850 },
-        { id: 2, apartment: 2, name: "Ayşe Demir", phone: "0533 234 5678", email: "ayse@email.com", status: "Aktif", monthlyDues: 920 },
-        { id: 3, apartment: 3, name: "Mehmet Kaya", phone: "0534 345 6789", email: "mehmet@email.com", status: "Aktif", monthlyDues: 780 },
-        { id: 4, apartment: 4, name: "Fatma Yıldız", phone: "0535 456 7890", email: "fatma@email.com", status: "Aktif", monthlyDues: 850 },
-        { id: 5, apartment: 5, name: "Ali Özkan", phone: "0536 567 8901", email: "ali@email.com", status: "Aktif", monthlyDues: 1050 }
+        { id: 1, apartment: 1, name: "Ahmet Yılmaz", phone: "0532 123 4567", email: "ahmet@email.com", status: "Aktif", status: document.getElementById('residentStatus').value},
+        { id: 2, apartment: 2, name: "Ayşe Demir", phone: "0533 234 5678", email: "ayse@email.com", status: "Aktif", status: document.getElementById('residentStatus').value},
+        { id: 3, apartment: 3, name: "Mehmet Kaya", phone: "0534 345 6789", email: "mehmet@email.com", status: "Aktif", status: document.getElementById('residentStatus').value},
+        { id: 4, apartment: 4, name: "Fatma Yıldız", phone: "0535 456 7890", email: "fatma@email.com", status: "Aktif", status: document.getElementById('residentStatus').value},
+        { id: 5, apartment: 5, name: "Ali Özkan", phone: "0536 567 8901", email: "ali@email.com", status: "Aktif", status: document.getElementById('residentStatus').value}
     ];
 
     let dues = [
@@ -216,22 +216,23 @@
     function loadResidents() {
         const tbody = document.getElementById('residentsTable');
         tbody.innerHTML = residents.map(resident => `
-<tr>
-    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${resident.apartment}</td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.name}</td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.phone}</td>
-    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.email}</td>
-    <td class="px-6 py-4 whitespace-nowrap">
-        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
-            ${resident.status}
-        </span>
-    </td>
-    <td class="admin-only px-6 py-4 whitespace-nowrap text-sm font-medium" style="${isAdmin ? 'display: table-cell;' : 'display: none;'}">
-        <button type="button" onclick="editResident(${resident.id})" class="text-blue-600 hover:text-blue-900 mr-3 px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500">Düzenle</button>
-        <button type="button" onclick="deleteResident(${resident.id})" class="text-red-600 hover:text-red-900 px-2 py-1 rounded hover:bg-red-50 border border-red-300 hover:border-red-500">Sil</button>
-    </td>
-</tr>
-` ).join("");("");('');
+            <tr>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${resident.apartment}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.name}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.phone}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.email}</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">₺${resident.monthlyDues}</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                        ${resident.status}
+                    </span>
+                </td>
+                <td class="admin-only px-6 py-4 whitespace-nowrap text-sm font-medium" style="${isAdmin ? 'display: table-cell;' : 'display: none;'}">
+                    <button type="button" onclick="editResident(${resident.id})" class="text-blue-600 hover:text-blue-900 mr-3 px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500">Düzenle</button>
+                    <button type="button" onclick="deleteResident(${resident.id})" class="text-red-600 hover:text-red-900 px-2 py-1 rounded hover:bg-red-50 border border-red-300 hover:border-red-500">Sil</button>
+                </td>
+            </tr>
+        `).join('');
     }
 
     // Load dues table
@@ -241,16 +242,7 @@
             // Calculate payments for this resident
             const residentPayments = payments.filter(p => p.apartment === resident.apartment);
             const totalPaid = residentPayments.reduce((sum, p) => sum + p.amount, 0);
-            const remaining = Math.max(0, resident.monthlyDues - totalPaid);
-            
-            let status = 'Ödendi';
-            let statusColor = 'bg-green-100 text-green-800';
-            
-            if (remaining > 0) {
-                if (totalPaid > 0) {
-                    status = 'Kısmi';
-                    statusColor = 'bg-yellow-100 text-yellow-800';
-                } else {
+            const remaining = Math.max(0, resident.status: document.getElementById('residentStatus').value} else {
                     status = 'Bekliyor';
                     statusColor = 'bg-red-100 text-red-800';
                 }
@@ -284,7 +276,7 @@
             <tr class="border-b border-gray-200">
                 <td class="px-3 py-2 whitespace-nowrap text-sm font-medium text-gray-900">${resident.apartment}</td>
                 <td class="px-3 py-2 whitespace-nowrap text-sm text-gray-900">${resident.name}</td>
-                <td class="px-3 py-2 whitespace-nowrap text-sm text-gray-900">₺${resident.monthlyDues.toLocaleString('tr-TR')}</td>
+                <td class="px-3 py-2 whitespace-nowrap text-sm text-gray-900">₺${resident.status: document.getElementById('residentStatus').value}</td>
                 <td class="px-3 py-2 whitespace-nowrap text-sm font-medium text-green-600">₺${totalPaid.toLocaleString('tr-TR')}</td>
                 <td class="px-3 py-2 whitespace-nowrap text-sm font-medium text-red-600">₺${remaining.toLocaleString('tr-TR')}</td>
                 <td class="px-3 py-2 whitespace-nowrap">
@@ -385,9 +377,9 @@
         }
         
         let message = `${resident.name} (Daire ${apartmentNo}) - Ödeme Detayları:\n\n`;
-        message += `Aylık Aidat: ₺${resident.monthlyDues.toLocaleString('tr-TR')}\n`;
+        message += `Aylık Aidat: ₺${resident.status: document.getElementById('residentStatus').value}\n`;
         message += `Toplam Ödenen: ₺${residentPayments.reduce((sum, p) => sum + p.amount, 0).toLocaleString('tr-TR')}\n`;
-        message += `Kalan: ₺${Math.max(0, resident.monthlyDues - residentPayments.reduce((sum, p) => sum + p.amount, 0)).toLocaleString('tr-TR')}\n\n`;
+        message += `Kalan: ₺${Math.max(0, resident.status: document.getElementById('residentStatus').value}\n\n`;
         
         if (residentPayments.length > 0) {
             message += 'Ödemeler:\n';
@@ -444,12 +436,7 @@
 
     // Update dues statistics
     function updateDuesStatistics() {
-        const totalDues = residents.reduce((sum, resident) => sum + resident.monthlyDues, 0);
-        const totalPaid = payments.reduce((sum, payment) => sum + payment.amount, 0);
-        const totalRemaining = Math.max(0, totalDues - totalPaid);
-        const collectionRate = totalDues > 0 ? Math.round((totalPaid / totalDues) * 100) : 0;
-        
-        document.getElementById('totalDues').textContent = `₺${totalDues.toLocaleString('tr-TR')}`;
+        const totalDues = residents.reduce((sum, resident) => sum + resident.status: document.getElementById('residentStatus').value}`;
         document.getElementById('totalPaid').textContent = `₺${totalPaid.toLocaleString('tr-TR')}`;
         document.getElementById('totalRemaining').textContent = `₺${totalRemaining.toLocaleString('tr-TR')}`;
         document.getElementById('collectionRate').textContent = `${collectionRate}%`;
@@ -545,15 +532,14 @@
                     apartment: parseInt(document.getElementById('apartmentNo').value),
                     name: document.getElementById('residentName').value,
                     phone: document.getElementById('residentPhone').value,
-                    email: document.getElementById('residentEmail').value
-                };
+                    email: document.getElementById('residentEmail').value,
+                    status: document.getElementById('residentStatus').value};
                 
                 // Update dues table if apartment number changed
                 const dueIndex = dues.findIndex(d => d.apartment === residents[residentIndex].apartment);
                 if (dueIndex !== -1) {
                     dues[dueIndex].resident = residents[residentIndex].name;
-                    dues[dueIndex].amount = residents[residentIndex].monthlyDues;
-                }
+                    
                 
                 showCustomAlert('Sakin bilgileri başarıyla güncellendi!');
             }
@@ -571,8 +557,8 @@
                 name: document.getElementById('residentName').value,
                 phone: document.getElementById('residentPhone').value,
                 email: document.getElementById('residentEmail').value,
-                status: 'Aktif'
-            };
+                status: 'Aktif',
+                status: document.getElementById('residentStatus').value};
             
             residents.push(newResident);
             
@@ -580,10 +566,7 @@
             dues.push({
                 apartment: newResident.apartment,
                 resident: newResident.name,
-                amount: newResident.monthlyDues,
-                status: 'Bekliyor',
-                lastPayment: '-'
-            });
+                amount: newResident.status: document.getElementById('residentStatus').value});
             
             showCustomAlert('Yeni sakin başarıyla eklendi!');
         }
@@ -667,16 +650,8 @@
         document.getElementById('residentName').value = resident.name;
         document.getElementById('residentPhone').value = resident.phone;
         document.getElementById('residentEmail').value = resident.email;
-        // Change modal title and button text
-        document.querySelector('#addResidentModal h3').textContent = 'Sakin Bilgilerini Düzenle';
-        document.querySelector('#addResidentModal button[type="submit"]').textContent = 'Güncelle';
-        
-        // Store the ID for updating
-        document.getElementById('addResidentModal').dataset.editId = id;
-        
-        // Show modal
-        showAddResidentModal();
-    }
+document.getElementById('residentStatus').value = resident.status;
+        document.getElementById('residentDues').value = resident.status: document.getElementById('residentStatus').value}
 
     function deleteResident(id) {
         console.log('🚀 DELETE RESIDENT - NEW VERSION START');
