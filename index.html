@@ -2,21 +2,69 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ustaoğlu Sitesi</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <title>Ustaoğlu Sitesi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <div class="p-4">
-    <h1 class="text-xl font-bold mb-4">Ustaoğlu Sitesi</h1>
-    <button onclick="toggleAdminLogin()">Giriş Yap</button>
-    <div id="tabContent">
-      <button onclick="showTab('sakinler')">Sakinler</button>
-      <button onclick="showTab('aidatlar')">Aidatlar</button>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-4">
+        <div class="flex justify-between items-center mb-4">
+            <h1 class="text-2xl font-bold">Ustaoğlu Sitesi</h1>
+            <button onclick="toggleAdminLogin()" class="bg-blue-500 text-white px-4 py-2 rounded">Yönetici Girişi</button>
+        </div>
+        <nav class="mb-6">
+            <button class="mr-2 px-4 py-2 bg-gray-200 rounded hover:bg-blue-200" onclick="showTab('sakinler')">Sakinler</button>
+            <button class="mr-2 px-4 py-2 bg-gray-200 rounded hover:bg-blue-200" onclick="showTab('aidatlar')">Aidatlar</button>
+            <button class="mr-2 px-4 py-2 bg-gray-200 rounded hover:bg-blue-200" onclick="showTab('gelir')">Gelir</button>
+            <button class="mr-2 px-4 py-2 bg-gray-200 rounded hover:bg-blue-200" onclick="showTab('gider')">Gider</button>
+            <button class="px-4 py-2 bg-gray-200 rounded hover:bg-blue-200" onclick="showTab('raporlar')">Raporlar</button>
+        </nav>
+
+        <div id="sakinler" class="tab">
+            <h2 class="text-xl font-semibold mb-2">Bina Sakinleri</h2>
+            <table class="min-w-full bg-white border">
+                <thead>
+                    <tr class="bg-gray-200 text-left">
+                        <th class="py-2 px-4 border-b">Daire No</th>
+                        <th class="py-2 px-4 border-b">Ad Soyad</th>
+                        <th class="py-2 px-4 border-b">Telefon</th>
+                        <th class="py-2 px-4 border-b">E-posta</th>
+                        <th class="py-2 px-4 border-b">Durum</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="py-2 px-4 border-b">1</td>
+                        <td class="py-2 px-4 border-b">Ahmet Yılmaz</td>
+                        <td class="py-2 px-4 border-b">0532 123 4567</td>
+                        <td class="py-2 px-4 border-b">ahmet@email.com</td>
+                        <td class="py-2 px-4 border-b text-green-600">Aktif</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div id="aidatlar" class="tab hidden">
+            <h2 class="text-xl font-semibold mb-2">Aidatlar</h2>
+            <p>Bu alan aidat ödemeleri için hazırlanacaktır.</p>
+        </div>
+
+        <div id="gelir" class="tab hidden">
+            <h2 class="text-xl font-semibold mb-2">Gelir</h2>
+            <p>Gelir bilgileri burada listelenecek.</p>
+        </div>
+
+        <div id="gider" class="tab hidden">
+            <h2 class="text-xl font-semibold mb-2">Gider</h2>
+            <p>Gider bilgileri burada listelenecek.</p>
+        </div>
+
+        <div id="raporlar" class="tab hidden">
+            <h2 class="text-xl font-semibold mb-2">Raporlar</h2>
+            <p>Raporlar burada sunulacaktır.</p>
+        </div>
     </div>
-    <div id="monthlyPaymentsTotalEl" class="mt-4 text-lg text-green-600"></div>
-  </div>
-  <script src="script.js"></script>
+
+    <script src="script.js"></script>
 </body>
 </html>

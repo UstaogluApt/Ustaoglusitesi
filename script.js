@@ -1,17 +1,14 @@
 
+function showTab(tabId) {
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.classList.add('hidden');
+    });
+    const activeTab = document.getElementById(tabId);
+    if (activeTab) {
+        activeTab.classList.remove('hidden');
+    }
+}
+
 function toggleAdminLogin() {
-  alert("Giriş başarılı!");
+    alert("Yönetici girişi henüz etkin değil.");
 }
-
-function showTab(tabName) {
-  alert("Sekme: " + tabName);
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  const monthlyPaymentsTotalEl = document.getElementById("monthlyPaymentsTotalEl");
-  if (monthlyPaymentsTotalEl) {
-    const tl = String.fromCharCode(8378);
-    const monthlyTotal = 1500;
-    monthlyPaymentsTotalEl.textContent = `${tl}${monthlyTotal.toLocaleString('tr-TR')}`;
-  }
-});
