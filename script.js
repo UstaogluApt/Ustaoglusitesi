@@ -258,7 +258,6 @@
                 '<div class="py-4 px-4 text-center text-gray-500 text-sm">Henüz ödeme yapılmamış</div>';
             
             return `
-                <td class="admin-only px-3 py-2 whitespace-nowrap text-sm font-medium" style="${isAdmin ? 'display: table-cell;' : 'display: none;'}">
                     <button type="button" onclick="viewPaymentDetails(${resident.apartment})" class="text-blue-600 hover:text-blue-900 px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500 text-xs">Detay</button>
                 </td>
             </tr>
