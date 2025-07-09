@@ -137,9 +137,6 @@
             userStatus.className = 'text-xs px-2 py-1 rounded-full bg-green-100 text-green-600';
             
             loginButton.innerHTML = `
-                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path>
-                </svg>
                 Çıkış Yap
             `;
             loginButton.className = 'text-sm text-red-600 hover:text-red-800 font-medium flex items-center';
@@ -216,21 +213,7 @@
     function loadResidents() {
         const tbody = document.getElementById('residentsTable');
         tbody.innerHTML = residents.map(resident => `
-            <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${resident.apartment}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.name}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.phone}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${resident.email}</td>
-                <td class="px-6 py-4 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                         ${resident.status}
-                    </span>
-                </td>
-                <td class="admin-only px-6 py-4 whitespace-nowrap text-sm font-medium" style="${isAdmin ? 'display: table-cell;' : 'display: none;'}">
-                    <button type="button" onclick="editResident(${resident.id})" class="text-blue-600 hover:text-blue-900 mr-3 px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500">Düzenle</button>
-                    <button type="button" onclick="deleteResident(${resident.id})" class="text-red-600 hover:text-red-900 px-2 py-1 rounded hover:bg-red-50 border border-red-300 hover:border-red-500">Sil</button>
-                </td>
-            </tr>
         `).join('');
     }
 
@@ -246,19 +229,11 @@
                     statusColor = 'bg-red-100 text-red-800';
             const paymentListHtml = residentPayments.length > 0
                 ? residentPayments.map(payment => `
-                    <div class="flex items-center justify-between py-2 px-4 border-b border-gray-100 last:border-b-0">
-                        <div class="flex-1">
-                            <div class="text-sm font-medium text-gray-900">${payment.month}</div>
-                            <div class="text-sm text-gray-500">${payment.amount} ₺ - ${payment.date}</div>
-                        </div>
-                    </div>
                 `).join("")
                 : '<div class="text-gray-500 text-sm">Ödeme bulunamadı</div>';
                 `).join('') : 
-                '<div class="py-4 px-4 text-center text-gray-500 text-sm">Henüz ödeme yapılmamış</div>';
             
             return `
-            </tr>
             <tr id="payment-details-${index}" class="hidden">
                 <td colspan="8" class="px-0 py-0">
                     <div class="bg-gray-50 border-t border-gray-200">
@@ -282,16 +257,6 @@
     function loadExpenses() {
         const tbody = document.getElementById('expensesTable');
         tbody.innerHTML = expenses.map(expense => `
-            <tr>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${new Date(expense.date).toLocaleDateString('tr-TR')}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${expense.description}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${expense.category}</td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">₺${expense.amount}</td>
-                <td class="admin-only px-6 py-4 whitespace-nowrap text-sm font-medium" style="${isAdmin ? 'display: table-cell;' : 'display: none;'}">
-                    <button type="button" onclick="editExpense(${expense.id})" class="text-blue-600 hover:text-blue-900 mr-3 px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500">Düzenle</button>
-                    <button type="button" onclick="deleteExpense(${expense.id})" class="text-red-600 hover:text-red-900 px-2 py-1 rounded hover:bg-red-50 border border-red-300 hover:border-red-500">Sil</button>
-                </td>
-            </tr>
         `).join('');
     }
 
@@ -372,27 +337,7 @@
             const typeColor = payment.type === 'Aidat' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800';
             
             return `
-            <div class="border-l-3 border-green-400 bg-green-50 p-2 rounded-r-lg">
-                <div class="flex items-start justify-between">
-                    <div class="flex-1 min-w-0">
-                        <div class="flex items-center justify-between mb-1">
-                            <h4 class="text-xs font-medium text-gray-900 truncate">Daire ${payment.apartment}</h4>
-                            <span class="px-1 py-0.5 text-xs font-semibold rounded-full ${typeColor} ml-1">
                                 ${payment.type}
-                            </span>
-                        </div>
-                        <p class="text-xs text-gray-700 mb-1 truncate">${payment.description}</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-xs text-gray-500">${new Date(payment.date).toLocaleDateString('tr-TR')}</span>
-                            <span class="text-sm font-bold text-green-600">₺${payment.amount.toLocaleString('tr-TR')}</span>
-                        </div>
-                    </div>
-                    <div class="admin-only ml-2 flex flex-col space-y-1" style="${isAdmin ? 'display: flex;' : 'display: none;'}">
-                        <button type="button" onclick="editPayment(${payment.id})" class="text-blue-600 hover:text-blue-900 text-xs px-1 py-0.5 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500">Düzenle</button>
-                        <button type="button" onclick="deletePayment(${payment.id})" class="text-red-600 hover:text-red-900 text-xs px-1 py-0.5 rounded hover:bg-red-50 border border-red-300 hover:border-red-500">Sil</button>
-                    </div>
-                </div>
-            </div>
             `;
         }).join('');
     }
@@ -448,7 +393,6 @@
         
         // Populate apartment dropdown
         const apartmentSelect = document.getElementById('paymentApartment');
-        apartmentSelect.innerHTML = '<option value="">Seçiniz</option>' + 
             residents.map(resident => 
                 `<option value="${resident.apartment}" data-resident="${resident.name}">${resident.apartment} - ${resident.name}</option>`
             ).join('');
@@ -1069,16 +1013,6 @@ document.getElementById('residentStatus').value = resident.status;
         categoriesDiv.innerHTML = Object.entries(categories).map(([category, amount]) => {
             const percentage = totalExpenses > 0 ? Math.round((amount / totalExpenses) * 100) : 0;
             return `
-                <div class="flex items-center justify-between p-2 bg-gray-50 rounded">
-                    <div class="flex items-center">
-                        <div class="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
-                        <span class="text-sm text-gray-700">${category}</span>
-                    </div>
-                    <div class="text-right">
-                        <div class="text-sm font-medium">₺${amount.toLocaleString('tr-TR')}</div>
-                        <div class="text-xs text-gray-500">${percentage}%</div>
-                    </div>
-                </div>
             `;
         }).join('');
     }
@@ -1101,7 +1035,6 @@ document.getElementById('residentStatus').value = resident.status;
         `).join('');
         
         if (recentExpenses.length === 0) {
-            activitiesDiv.innerHTML = '<p class="text-gray-500 text-sm text-center py-4">Henüz aktivite bulunmuyor</p>';
         }
     }
 
