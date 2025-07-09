@@ -258,7 +258,6 @@
                 '<div class="py-4 px-4 text-center text-gray-500 text-sm">Henüz ödeme yapılmamış</div>';
             
             return `
-                    <button type="button" onclick="viewPaymentDetails(${resident.apartment})" class="text-blue-600 hover:text-blue-900 px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500 text-xs">Detay</button>
                 </td>
             </tr>
             <tr id="payment-details-${index}" class="hidden">
@@ -1121,3 +1120,17 @@ document.getElementById('residentStatus').value = resident.status;
         loadExpenses();
         updateReportsTab();
     });
+
+
+function showTab(tabId) {
+    document.querySelectorAll('.tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    document.getElementById(tabId).classList.add('active');
+}
+
+
+function toggleAdminLogin() {
+    const modal = document.getElementById('adminLoginModal');
+    modal.classList.toggle('hidden');
+}
