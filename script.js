@@ -254,7 +254,6 @@
                     </div>
                 `).join("")
                 : '<div class="text-gray-500 text-sm">Ödeme bulunamadı</div>';
-                    </div>
                 `).join('') : 
                 '<div class="py-4 px-4 text-center text-gray-500 text-sm">Henüz ödeme yapılmamış</div>';
             
