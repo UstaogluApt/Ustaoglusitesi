@@ -244,16 +244,16 @@
             const remaining = Math.max(0, resident.status === 'Aktif' ? parseFloat(document.getElementById('residentStatus').value) || 0 : 0);
                     status = 'Bekliyor';
                     statusColor = 'bg-red-100 text-red-800';
-                }
-            }
-            
-            // Create payment list HTML
-            const paymentListHtml = residentPayments.length > 0 ? 
-                residentPayments.map(payment => `
+            const paymentListHtml = residentPayments.length > 0
+                ? residentPayments.map(payment => `
                     <div class="flex items-center justify-between py-2 px-4 border-b border-gray-100 last:border-b-0">
                         <div class="flex-1">
-                            <div class="flex items-center justify-between">
-                                <span class="text-sm font-medium text-gray-900">${payment.description}</span>
+                            <div class="text-sm font-medium text-gray-900">${payment.month}</div>
+                            <div class="text-sm text-gray-500">${payment.amount} ₺ - ${payment.date}</div>
+                        </div>
+                    </div>
+                `).join("")
+                : '<div class="text-gray-500 text-sm">Ödeme bulunamadı</div>';
                                 <span class="px-2 py-1 text-xs font-semibold rounded-full ${payment.type === 'Aidat' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}">
                                     ${payment.type}
                                 </span>
