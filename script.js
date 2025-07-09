@@ -241,7 +241,7 @@
             // Calculate payments for this resident
             const residentPayments = payments.filter(p => p.apartment === resident.apartment);
             const totalPaid = residentPayments.reduce((sum, p) => sum + p.amount, 0);
-            const remaining = Math.max(0, resident.status: document.getElementById('residentStatus').value} else {
+            const remaining = Math.max(0, resident.status === 'Aktif' ? parseFloat(document.getElementById('residentStatus').value) || 0 : 0);
                     status = 'Bekliyor';
                     statusColor = 'bg-red-100 text-red-800';
                 }
