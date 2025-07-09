@@ -26,7 +26,7 @@
             }
         }, 3000);
         
-        console.log('📢 Custom Alert:', message);
+        console.log('📢 Custom Alert:', message);)
     }
 
     // Sample data
@@ -446,7 +446,7 @@
     // Modal functions (Admin only)
     function showAddResidentModal() {
         if (!isAdmin) {
-            alert('Bu işlem için yönetici girişi gereklidir.');
+            alert('Bu işlem için yönetici girişi gereklidir.');)
             return;
         }
         document.getElementById('addResidentModal').classList.remove('hidden');
@@ -460,7 +460,7 @@
 
     function showAddExpenseModal() {
         if (!isAdmin) {
-            alert('Bu işlem için yönetici girişi gereklidir.');
+            alert('Bu işlem için yönetici girişi gereklidir.');)
             return;
         }
         document.getElementById('addExpenseModal').classList.remove('hidden');
@@ -653,40 +653,40 @@ document.getElementById('residentStatus').value = resident.status;
         document.getElementById('residentDues').value = resident.status: document.getElementById('residentStatus').value}
 
     function deleteResident(id) {
-        console.log('🚀 DELETE RESIDENT - NEW VERSION START');
-        console.log('📋 ID received:', id, 'Type:', typeof id);
+        console.log('🚀 DELETE RESIDENT - NEW VERSION START');)
+        console.log('📋 ID received:', id, 'Type:', typeof id);)
         
         if (!isAdmin) {
-            console.log('❌ Not admin, showing alert...');
+            console.log('❌ Not admin, showing alert...');)
             showCustomAlert('Bu işlem için yönetici girişi gereklidir.');
             return;
         }
         
         const numericId = typeof id === 'string' ? parseInt(id) : id;
-        console.log('🔢 Numeric ID:', numericId);
+        console.log('🔢 Numeric ID:', numericId);)
         
         const resident = residents.find(r => r.id === numericId);
-        console.log('👤 Found resident:', resident);
+        console.log('👤 Found resident:', resident);)
         
         if (!resident) {
-            console.log('❌ Resident not found!');
+            console.log('❌ Resident not found!');)
             showCustomAlert('Sakin bulunamadı!');
             return;
         }
         
-        console.log('✅ Resident found, proceeding with deletion...');
+        console.log('✅ Resident found, proceeding with deletion...');)
         
         // Direct deletion without confirm for sandbox environment
-        console.log('🗑️ Deleting resident directly...');
-        console.log('📊 Before deletion - Array length:', residents.length);
+        console.log('🗑️ Deleting resident directly...');)
+        console.log('📊 Before deletion - Array length:', residents.length);)
         
         residents = residents.filter(r => r.id !== numericId);
         dues = dues.filter(d => d.apartment !== resident.apartment);
         
-        console.log('📊 After deletion - Array length:', residents.length);
-        console.log('✅ Resident deleted:', resident.name);
+        console.log('📊 After deletion - Array length:', residents.length);)
+        console.log('✅ Resident deleted:', resident.name);)
         
-        console.log('🔄 Reloading table...');
+        console.log('🔄 Reloading table...');)
         loadResidents();
         if (document.querySelector('.tab-content.active').id === 'dues') {
             loadDues();
@@ -695,8 +695,8 @@ document.getElementById('residentStatus').value = resident.status;
         updateReportsTab();
         
         showCustomAlert(`${resident.name} başarıyla silindi!`);
-        console.log('🎉 SUCCESS: Deletion completed!');
-        console.log('🏁 DELETE RESIDENT - NEW VERSION END');
+        console.log('🎉 SUCCESS: Deletion completed!');)
+        console.log('🏁 DELETE RESIDENT - NEW VERSION END');)
     }
 
     function editExpense(id) {
@@ -729,46 +729,46 @@ document.getElementById('residentStatus').value = resident.status;
     }
 
     function deleteExpense(id) {
-        console.log('🚀 DELETE EXPENSE - NEW VERSION START');
-        console.log('📋 ID received:', id, 'Type:', typeof id);
+        console.log('🚀 DELETE EXPENSE - NEW VERSION START');)
+        console.log('📋 ID received:', id, 'Type:', typeof id);)
         
         if (!isAdmin) {
-            console.log('❌ Not admin, showing alert...');
+            console.log('❌ Not admin, showing alert...');)
             showCustomAlert('Bu işlem için yönetici girişi gereklidir.');
             return;
         }
         
         const numericId = typeof id === 'string' ? parseInt(id) : id;
-        console.log('🔢 Numeric ID:', numericId);
+        console.log('🔢 Numeric ID:', numericId);)
         
         const expense = expenses.find(e => e.id === numericId);
-        console.log('💰 Found expense:', expense);
+        console.log('💰 Found expense:', expense);)
         
         if (!expense) {
-            console.log('❌ Expense not found!');
+            console.log('❌ Expense not found!');)
             showCustomAlert('Gider bulunamadı!');
             return;
         }
         
-        console.log('✅ Expense found, proceeding with deletion...');
+        console.log('✅ Expense found, proceeding with deletion...');)
         
         // Direct deletion without confirm for sandbox environment
-        console.log('🗑️ Deleting expense directly...');
-        console.log('📊 Before deletion - Array length:', expenses.length);
+        console.log('🗑️ Deleting expense directly...');)
+        console.log('📊 Before deletion - Array length:', expenses.length);)
         
         expenses = expenses.filter(e => e.id !== numericId);
         
-        console.log('📊 After deletion - Array length:', expenses.length);
-        console.log('✅ Expense deleted:', expense.description);
+        console.log('📊 After deletion - Array length:', expenses.length);)
+        console.log('✅ Expense deleted:', expense.description);)
         
-        console.log('🔄 Reloading table...');
+        console.log('🔄 Reloading table...');)
         loadExpenses();
         updateDashboard();
         updateReportsTab();
         
         showCustomAlert(`"${expense.description}" gideri başarıyla silindi!`);
-        console.log('🎉 SUCCESS: Deletion completed!');
-        console.log('🏁 DELETE EXPENSE - NEW VERSION END');
+        console.log('🎉 SUCCESS: Deletion completed!');)
+        console.log('🏁 DELETE EXPENSE - NEW VERSION END');)
     }
 
     function addPayment(event) {
@@ -864,46 +864,46 @@ document.getElementById('residentStatus').value = resident.status;
     }
 
     function deletePayment(id) {
-        console.log('🚀 DELETE PAYMENT - START');
-        console.log('📋 ID received:', id, 'Type:', typeof id);
+        console.log('🚀 DELETE PAYMENT - START');)
+        console.log('📋 ID received:', id, 'Type:', typeof id);)
         
         if (!isAdmin) {
-            console.log('❌ Not admin, showing alert...');
+            console.log('❌ Not admin, showing alert...');)
             showCustomAlert('Bu işlem için yönetici girişi gereklidir.');
             return;
         }
         
         const numericId = typeof id === 'string' ? parseInt(id) : id;
-        console.log('🔢 Numeric ID:', numericId);
+        console.log('🔢 Numeric ID:', numericId);)
         
         const payment = payments.find(p => p.id === numericId);
-        console.log('💳 Found payment:', payment);
+        console.log('💳 Found payment:', payment);)
         
         if (!payment) {
-            console.log('❌ Payment not found!');
+            console.log('❌ Payment not found!');)
             showCustomAlert('Ödeme bulunamadı!');
             return;
         }
         
-        console.log('✅ Payment found, proceeding with deletion...');
+        console.log('✅ Payment found, proceeding with deletion...');)
         
         // Direct deletion without confirm for sandbox environment
-        console.log('🗑️ Deleting payment directly...');
-        console.log('📊 Before deletion - Array length:', payments.length);
+        console.log('🗑️ Deleting payment directly...');)
+        console.log('📊 Before deletion - Array length:', payments.length);)
         
         payments = payments.filter(p => p.id !== numericId);
         
-        console.log('📊 After deletion - Array length:', payments.length);
-        console.log('✅ Payment deleted:', payment.description);
+        console.log('📊 After deletion - Array length:', payments.length);)
+        console.log('✅ Payment deleted:', payment.description);)
         
-        console.log('🔄 Reloading table...');
+        console.log('🔄 Reloading table...');)
         loadDues(); // Reload dues to update payment status
         updateDashboard();
         updateReportsTab();
         
         showCustomAlert(`"${payment.description}" ödemesi başarıyla silindi!`);
-        console.log('🎉 SUCCESS: Deletion completed!');
-        console.log('🏁 DELETE PAYMENT - END');
+        console.log('🎉 SUCCESS: Deletion completed!');)
+        console.log('🏁 DELETE PAYMENT - END');)
     }
 
     function markAsPaid() {
@@ -966,7 +966,7 @@ document.getElementById('residentStatus').value = resident.status;
     }
 
     function downloadReport(type) {
-        alert(`${type} raporu indiriliyor... (Demo sürümünde aktif değil)`);
+        alert(`${type} raporu indiriliyor... (Demo sürümünde aktif değil)`);)
     }
 
     // Dashboard update functions
