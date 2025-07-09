@@ -269,8 +269,8 @@
         const paymentCountEl = document.getElementById('paymentCount');
         
 if (monthlyPaymentsTotalEl) {
-    monthlyPaymentsTotalEl.textContent = `₺${monthlyTotal.toLocaleString('tr-TR')}`;
-}
+    const tl = String.fromCharCode(8378);
+    monthlyPaymentsTotalEl.textContent = `${tl}${monthlyTotal.toLocaleString('tr-TR')}`;
         if (duesPaymentsTotalEl) duesPaymentsTotalEl.textContent = `\u20BA${duesPayments.toLocaleString('tr-TR')}`;
         if (extraPaymentsTotalEl) extraPaymentsTotalEl.textContent = `\u20BA${extraPayments.toLocaleString('tr-TR')}`;
         if (paymentCountEl) paymentCountEl.textContent = paymentCount.toString();
