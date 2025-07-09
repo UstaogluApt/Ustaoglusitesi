@@ -230,22 +230,6 @@
             const paymentListHtml = residentPayments.length > 0
                 ? residentPayments.map(payment => `
                 `).join("")
-                : '<div class="text-gray-500 text-sm">Ödeme bulunamadı</div>';
-                `).join('') : 
-            
-            return `
-            <tr id="payment-details-${index}" class="hidden">
-                <td colspan="8" class="px-0 py-0">
-                    <div class="bg-gray-50 border-t border-gray-200">
-                        <div class="px-4 py-3">
-                            <h4 class="text-sm font-medium text-gray-900 mb-2">Ödeme Geçmişi - ${resident.name}</h4>
-                            <div class="bg-white rounded-lg border border-gray-200 max-h-48 overflow-y-auto">
-                                ${paymentListHtml}
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
             `;
         }).join('');
         
