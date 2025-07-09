@@ -258,16 +258,6 @@
                 '<div class="py-4 px-4 text-center text-gray-500 text-sm">Henüz ödeme yapılmamış</div>';
             
             return `
-            <tr class="border-b border-gray-200">
-                <td class="px-3 py-2 whitespace-nowrap text-sm font-medium text-gray-900">${resident.apartment}</td>
-                <td class="px-3 py-2 whitespace-nowrap text-sm text-gray-900">${resident.name}</td>
-                <td class="px-3 py-2 whitespace-nowrap text-sm text-gray-900">₺${resident.status: document.getElementById('residentStatus').value}</td>
-                <td class="px-3 py-2 whitespace-nowrap text-sm font-medium text-green-600">₺${totalPaid.toLocaleString('tr-TR')}</td>
-                <td class="px-3 py-2 whitespace-nowrap text-sm font-medium text-red-600">₺${remaining.toLocaleString('tr-TR')}</td>
-                <td class="px-3 py-2 whitespace-nowrap">
-                    <span class="px-2 inline-flex text-xs leading-4 font-semibold rounded-full ${statusColor}">
-                        ${status}
-                    </span>
                 </td>
                 <td class="px-3 py-2 whitespace-nowrap text-sm">
                     <button type="button" onclick="togglePaymentDetails(${index})" class="flex items-center text-blue-600 hover:text-blue-900 font-medium text-xs">
