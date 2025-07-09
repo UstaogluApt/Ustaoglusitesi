@@ -268,9 +268,9 @@
         const extraPaymentsTotalEl = document.getElementById('extraPaymentsTotal');
         const paymentCountEl = document.getElementById('paymentCount');
         
-        if (monthlyPaymentsTotalEl) monthlyPaymentsTotalEl.textContent = `₺${monthlyTotal.toLocaleString('tr-TR')}`;
-        if (duesPaymentsTotalEl) duesPaymentsTotalEl.textContent = `₺${duesPayments.toLocaleString('tr-TR')}`;
-        if (extraPaymentsTotalEl) extraPaymentsTotalEl.textContent = `₺${extraPayments.toLocaleString('tr-TR')}`;
+        if (monthlyPaymentsTotalEl) monthlyPaymentsTotalEl.textContent = `\u20BA${monthlyTotal.toLocaleString('tr-TR')}`;
+        if (duesPaymentsTotalEl) duesPaymentsTotalEl.textContent = `\u20BA${duesPayments.toLocaleString('tr-TR')}`;
+        if (extraPaymentsTotalEl) extraPaymentsTotalEl.textContent = `\u20BA${extraPayments.toLocaleString('tr-TR')}`;
         if (paymentCountEl) paymentCountEl.textContent = paymentCount.toString();
     }
 
@@ -289,14 +289,14 @@
         }
         
         let message = `${resident.name} (Daire ${apartmentNo}) - Ödeme Detayları:\n\n`;
-        message += `Aylık Aidat: ₺${resident.status: document.getElementById('residentStatus').value}\n`;
-        message += `Toplam Ödenen: ₺${residentPayments.reduce((sum, p) => sum + p.amount, 0).toLocaleString('tr-TR')}\n`;
-        message += `Kalan: ₺${Math.max(0, resident.status: document.getElementById('residentStatus').value}\n\n`;
+        message += `Aylık Aidat: \u20BA${resident.status: document.getElementById('residentStatus').value}\n`;
+        message += `Toplam Ödenen: \u20BA${residentPayments.reduce((sum, p) => sum + p.amount, 0).toLocaleString('tr-TR')}\n`;
+        message += `Kalan: \u20BA${Math.max(0, resident.status: document.getElementById('residentStatus').value}\n\n`;
         
         if (residentPayments.length > 0) {
             message += 'Ödemeler:\n';
             residentPayments.forEach(payment => {
-                message += `• ${new Date(payment.date).toLocaleDateString('tr-TR')} - ${payment.description} - ₺${payment.amount.toLocaleString('tr-TR')} (${payment.type})\n`;
+                message += `• ${new Date(payment.date).toLocaleDateString('tr-TR')} - ${payment.description} - \u20BA${payment.amount.toLocaleString('tr-TR')} (${payment.type})\n`;
             });
         } else {
             message += 'Henüz ödeme yapılmamış.';
@@ -329,8 +329,8 @@
     // Update dues statistics
     function updateDuesStatistics() {
         const totalDues = residents.reduce((sum, resident) => sum + resident.status: document.getElementById('residentStatus').value}`;
-        document.getElementById('totalPaid').textContent = `₺${totalPaid.toLocaleString('tr-TR')}`;
-        document.getElementById('totalRemaining').textContent = `₺${totalRemaining.toLocaleString('tr-TR')}`;
+        document.getElementById('totalPaid').textContent = `\u20BA${totalPaid.toLocaleString('tr-TR')}`;
+        document.getElementById('totalRemaining').textContent = `\u20BA${totalRemaining.toLocaleString('tr-TR')}`;
         document.getElementById('collectionRate').textContent = `${collectionRate}%`;
         
         updatePaymentStatistics();
@@ -876,12 +876,12 @@ document.getElementById('residentStatus').value = resident.status;
             return paymentDate.getMonth() === currentMonth && paymentDate.getFullYear() === currentYear;
         });
         const monthlyCollected = monthlyPayments.reduce((sum, payment) => sum + payment.amount, 0);
-        document.getElementById('monthlyCollected').textContent = `₺${monthlyCollected.toLocaleString('tr-TR')}`;
+        document.getElementById('monthlyCollected').textContent = `\u20BA${monthlyCollected.toLocaleString('tr-TR')}`;
         
         // Calculate pending dues
         const pendingDues = dues.filter(due => due.status !== 'Ödendi');
         const pendingAmount = pendingDues.reduce((sum, due) => sum + due.amount, 0);
-        document.getElementById('pendingDues').textContent = `₺${pendingAmount.toLocaleString('tr-TR')}`;
+        document.getElementById('pendingDues').textContent = `\u20BA${pendingAmount.toLocaleString('tr-TR')}`;
         
         // Calculate monthly expenses
         const currentMonthExpenses = expenses.filter(expense => {
@@ -890,7 +890,7 @@ document.getElementById('residentStatus').value = resident.status;
                    expenseDate.getFullYear() === currentYear;
         });
         const monthlyExpensesTotal = currentMonthExpenses.reduce((sum, expense) => sum + expense.amount, 0);
-        document.getElementById('monthlyExpenses').textContent = `₺${monthlyExpensesTotal.toLocaleString('tr-TR')}`;
+        document.getElementById('monthlyExpenses').textContent = `\u20BA${monthlyExpensesTotal.toLocaleString('tr-TR')}`;
     }
 
     function populateMonthSelector() {
@@ -957,13 +957,13 @@ document.getElementById('residentStatus').value = resident.status;
         const collectionRate = totalDues > 0 ? Math.round((paidDues / totalDues) * 100) : 0;
         
         // Update report elements
-        document.getElementById('reportTotalIncome').textContent = `₺${totalIncome.toLocaleString('tr-TR')}`;
-        document.getElementById('reportTotalExpenses').textContent = `₺${totalExpenses.toLocaleString('tr-TR')}`;
-        document.getElementById('reportNetBalance').textContent = `₺${netBalance.toLocaleString('tr-TR')}`;
+        document.getElementById('reportTotalIncome').textContent = `\u20BA${totalIncome.toLocaleString('tr-TR')}`;
+        document.getElementById('reportTotalExpenses').textContent = `\u20BA${totalExpenses.toLocaleString('tr-TR')}`;
+        document.getElementById('reportNetBalance').textContent = `\u20BA${netBalance.toLocaleString('tr-TR')}`;
         
-        document.getElementById('reportTotalDues').textContent = `₺${totalDues.toLocaleString('tr-TR')}`;
-        document.getElementById('reportPaidDues').textContent = `₺${paidDues.toLocaleString('tr-TR')}`;
-        document.getElementById('reportPendingDues').textContent = `₺${pendingDues.toLocaleString('tr-TR')}`;
+        document.getElementById('reportTotalDues').textContent = `\u20BA${totalDues.toLocaleString('tr-TR')}`;
+        document.getElementById('reportPaidDues').textContent = `\u20BA${paidDues.toLocaleString('tr-TR')}`;
+        document.getElementById('reportPendingDues').textContent = `\u20BA${pendingDues.toLocaleString('tr-TR')}`;
         document.getElementById('reportCollectionRate').textContent = `${collectionRate}%`;
         document.getElementById('reportCollectionBar').style.width = `${collectionRate}%`;
         
@@ -1014,7 +1014,7 @@ document.getElementById('residentStatus').value = resident.status;
                     <div class="text-sm font-medium text-gray-900">${expense.description}</div>
                     <div class="text-xs text-gray-500">${new Date(expense.date).toLocaleDateString('tr-TR')} • ${expense.category}</div>
                 </div>
-                <div class="text-sm font-medium text-red-600">-₺${expense.amount.toLocaleString('tr-TR')}</div>
+                <div class="text-sm font-medium text-red-600">-\u20BA${expense.amount.toLocaleString('tr-TR')}</div>
             </div>
         `).join('');
         
