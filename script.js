@@ -26,7 +26,7 @@
             }
         }, 3000);
         
-        console.log('📢 Custom Alert:', message);)
+        console.log('📢 Custom Alert:', message);
     }
 
     // Sample data
