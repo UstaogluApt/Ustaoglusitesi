@@ -254,10 +254,6 @@
                     </div>
                 `).join("")
                 : '<div class="text-gray-500 text-sm">Ödeme bulunamadı</div>';
-                        <div class="admin-only ml-4" style="${isAdmin ? 'display: flex;' : 'display: none;'}">
-                            <button type="button" onclick="editPayment(${payment.id})" class="text-blue-600 hover:text-blue-900 text-xs px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500 mr-1">Düzenle</button>
-                            <button type="button" onclick="deletePayment(${payment.id})" class="text-red-600 hover:text-red-900 text-xs px-2 py-1 rounded hover:bg-red-50 border border-red-300 hover:border-red-500">Sil</button>
-                        </div>
                     </div>
                 `).join('') : 
                 '<div class="py-4 px-4 text-center text-gray-500 text-sm">Henüz ödeme yapılmamış</div>';
