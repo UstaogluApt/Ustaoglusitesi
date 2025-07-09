@@ -254,15 +254,6 @@
                     </div>
                 `).join("")
                 : '<div class="text-gray-500 text-sm">Ödeme bulunamadı</div>';
-                                <span class="px-2 py-1 text-xs font-semibold rounded-full ${payment.type === 'Aidat' ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800'}">
-                                    ${payment.type}
-                                </span>
-                            </div>
-                            <div class="flex items-center justify-between mt-1">
-                                <span class="text-xs text-gray-500">${new Date(payment.date).toLocaleDateString('tr-TR')}</span>
-                                <span class="text-sm font-bold text-green-600">₺${payment.amount.toLocaleString('tr-TR')}</span>
-                            </div>
-                        </div>
                         <div class="admin-only ml-4" style="${isAdmin ? 'display: flex;' : 'display: none;'}">
                             <button type="button" onclick="editPayment(${payment.id})" class="text-blue-600 hover:text-blue-900 text-xs px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500 mr-1">Düzenle</button>
                             <button type="button" onclick="deletePayment(${payment.id})" class="text-red-600 hover:text-red-900 text-xs px-2 py-1 rounded hover:bg-red-50 border border-red-300 hover:border-red-500">Sil</button>
