@@ -258,7 +258,6 @@
                 '<div class="py-4 px-4 text-center text-gray-500 text-sm">Henüz ödeme yapılmamış</div>';
             
             return `
-                </td>
             </tr>
             <tr id="payment-details-${index}" class="hidden">
                 <td colspan="8" class="px-0 py-0">
