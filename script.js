@@ -31,11 +31,11 @@
 
     // Sample data
     let residents = [
-        { id: 1, apartment: 1, name: "Ahmet Yılmaz", phone: "0532 123 4567", email: "ahmet@email.com", status: "Aktif", },
-        { id: 2, apartment: 2, name: "Ayşe Demir", phone: "0533 234 5678", email: "ayse@email.com", status: "Aktif", },
-        { id: 3, apartment: 3, name: "Mehmet Kaya", phone: "0534 345 6789", email: "mehmet@email.com", status: "Aktif", },
-        { id: 4, apartment: 4, name: "Fatma Yıldız", phone: "0535 456 7890", email: "fatma@email.com", status: "Aktif", },
-        { id: 5, apartment: 5, name: "Ali Özkan", phone: "0536 567 8901", email: "ali@email.com", status: "Aktif", }
+        { id: 1, apartment: 1, name: "Ahmet Yılmaz", phone: "0532 123 4567", email: "ahmet@email.com", status: "Aktif", status: document.getElementById('residentStatus').value},
+        { id: 2, apartment: 2, name: "Ayşe Demir", phone: "0533 234 5678", email: "ayse@email.com", status: "Aktif", status: document.getElementById('residentStatus').value},
+        { id: 3, apartment: 3, name: "Mehmet Kaya", phone: "0534 345 6789", email: "mehmet@email.com", status: "Aktif", status: document.getElementById('residentStatus').value},
+        { id: 4, apartment: 4, name: "Fatma Yıldız", phone: "0535 456 7890", email: "fatma@email.com", status: "Aktif", status: document.getElementById('residentStatus').value},
+        { id: 5, apartment: 5, name: "Ali Özkan", phone: "0536 567 8901", email: "ali@email.com", status: "Aktif", status: document.getElementById('residentStatus').value}
     ];
 
     let dues = [
@@ -289,9 +289,9 @@
         }
         
         let message = `${resident.name} (Daire ${apartmentNo}) - Ödeme Detayları:\n\n`;
-        message += `Aylık Aidat: \u20BA${resident.}\n`;
+        message += `Aylık Aidat: \u20BA${resident.status: document.getElementById('residentStatus').value}\n`;
         message += `Toplam Ödenen: \u20BA${residentPayments.reduce((sum, p) => sum + p.amount, 0).toLocaleString('tr-TR')}\n`;
-        message += `Kalan: \u20BA${Math.max(0, resident.}\n\n`;
+        message += `Kalan: \u20BA${Math.max(0, resident.status: document.getElementById('residentStatus').value}\n\n`;
         
         if (residentPayments.length > 0) {
             message += 'Ödemeler:\n';
@@ -328,7 +328,7 @@
 
     // Update dues statistics
     function updateDuesStatistics() {
-        const totalDues = residents.reduce((sum, resident) => sum + resident.}`;
+        const totalDues = residents.reduce((sum, resident) => sum + resident.status: document.getElementById('residentStatus').value}`;
         document.getElementById('totalPaid').textContent = `\u20BA${totalPaid.toLocaleString('tr-TR')}`;
         document.getElementById('totalRemaining').textContent = `\u20BA${totalRemaining.toLocaleString('tr-TR')}`;
         document.getElementById('collectionRate').textContent = `${collectionRate}%`;
@@ -424,7 +424,7 @@
                     name: document.getElementById('residentName').value,
                     phone: document.getElementById('residentPhone').value,
                     email: document.getElementById('residentEmail').value,
-                    };
+                    status: document.getElementById('residentStatus').value};
                 
                 // Update dues table if apartment number changed
                 const dueIndex = dues.findIndex(d => d.apartment === residents[residentIndex].apartment);
@@ -449,7 +449,7 @@
                 phone: document.getElementById('residentPhone').value,
                 email: document.getElementById('residentEmail').value,
                 status: 'Aktif',
-                };
+                status: document.getElementById('residentStatus').value};
             
             residents.push(newResident);
             
@@ -457,7 +457,7 @@
             dues.push({
                 apartment: newResident.apartment,
                 resident: newResident.name,
-                amount: newResident.});
+                amount: newResident.status: document.getElementById('residentStatus').value});
             
             showCustomAlert('Yeni sakin başarıyla eklendi!');
         }
@@ -542,7 +542,7 @@
         document.getElementById('residentPhone').value = resident.phone;
         document.getElementById('residentEmail').value = resident.email;
 document.getElementById('residentStatus').value = resident.status;
-        document.getElementById('residentDues').value = resident.}
+        document.getElementById('residentDues').value = resident.status: document.getElementById('residentStatus').value}
 
     function deleteResident(id) {
         console.log('🚀 DELETE RESIDENT - NEW VERSION START');)
