@@ -258,15 +258,6 @@
                 '<div class="py-4 px-4 text-center text-gray-500 text-sm">Henüz ödeme yapılmamış</div>';
             
             return `
-                </td>
-                <td class="px-3 py-2 whitespace-nowrap text-sm">
-                    <button type="button" onclick="togglePaymentDetails(${index})" class="flex items-center text-blue-600 hover:text-blue-900 font-medium text-xs">
-                        <span class="mr-1">${residentPayments.length} Ödeme</span>
-                        <svg class="w-3 h-3 transform transition-transform duration-200" id="arrow-${index}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
-                    </button>
-                </td>
                 <td class="admin-only px-3 py-2 whitespace-nowrap text-sm font-medium" style="${isAdmin ? 'display: table-cell;' : 'display: none;'}">
                     <button type="button" onclick="viewPaymentDetails(${resident.apartment})" class="text-blue-600 hover:text-blue-900 px-2 py-1 rounded hover:bg-blue-50 border border-blue-300 hover:border-blue-500 text-xs">Detay</button>
                 </td>
