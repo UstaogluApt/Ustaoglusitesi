@@ -1155,4 +1155,3 @@ document.getElementById('residentStatus').value = resident.status;
         loadExpenses();
         updateReportsTab();
     });
-
